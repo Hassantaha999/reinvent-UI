@@ -89,4 +89,4 @@ for their guidance and support and for valuable feedback and contributions to th
 
 
 ## License 
-This project is licensed under the terms of the Apache 2.0 License. See the [LICENSE]([LICENSE](https://github.com/Hassantaha999/reinvent-UI/blob/main/LICENSE)) file for details.
+This project is licensed under the terms of the Apache 2.0 License. See the [LICENSE]((https://github.com/Hassantaha999/reinvent-UI/blob/main/LICENSE)) file for details.
