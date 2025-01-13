@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd 
 import rdkit
 from rdkit import Chem
-from rdkit.Chem import PandasTools
 import streamlit as st 
 import zipfile
 import io
@@ -1579,7 +1578,7 @@ def convert_sdf_smi(sdf_file):
         str: The path to the generated SMILES file.
     """
     try:
-        df = PandasTools.LoadSDF(sdf_file, molColName='Molecule', smilesName='SMILES')
+        df = rdkit.Chem.PandasTools.LoadSDF(sdf_file, molColName='Molecule', smilesName='SMILES')
         smi_file = f'{sdf_file[:-4]}.smi'
         df.to_csv(smi_file, columns=["SMILES"], index=False, header=False)
         return smi_file

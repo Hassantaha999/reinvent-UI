@@ -1,9 +1,8 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
-# platform: win-64
-python=3.10.16
-streamlit=1.40.1
-matplotlib=3.9.2
-numpy=1.26.4
-pandas=2.2.3
-rdkit=2024.03.5
+# Python version --> python=3.10.16
+streamlit==1.40.1
+matplotlib==3.9.2
+numpy==1.26.4
+pandas==2.2.3
+rdkit==2024.03.5
