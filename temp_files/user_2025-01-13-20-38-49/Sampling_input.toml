@@ -1,0 +1,21 @@
+### REINVENT4 TOML input ###
+### Sampling Run Mode ###
+
+# General Options
+run_type = "sampling"
+use_cuda = true
+json_out_config = "Sampling_input.json"
+
+[parameters]
+# Generic Parameters
+output_file = "sampling.csv"
+num_smiles = 100
+unique_molecules = true
+randomize_smiles = true
+
+# Mol2Mol Generator Parameters
+model_file = "mol2mol_similarity.prior"
+smiles_file = "input_molecules.smi"
+sample_strategy = "multinomial"
+distance_threshold = 100
+
