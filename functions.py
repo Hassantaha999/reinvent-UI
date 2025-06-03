@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd 
 import rdkit
 from rdkit import Chem
+from rdkit.Chem import Draw
 import streamlit as st 
 import zipfile
 import io
@@ -1554,8 +1555,8 @@ def smi_to_png(smi: str) -> str:
         str: A data URI containing the PNG image of the molecule.
     """
     try:
-        mol = rdkit.Chem.MolFromSmiles(smi)
-        pil_image = rdkit.Chem.Draw.MolToImage(mol)
+        mol = Chem.MolFromSmiles(smi)
+        pil_image = Draw.MolToImage(mol)
 
         with io.BytesIO() as buffer:
             pil_image.save(buffer, "png")
