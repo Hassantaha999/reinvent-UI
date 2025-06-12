@@ -1,0 +1,5 @@
+libcairo2
+libcairo2-dev
+libxrender1
+libsm6
+libxext6
