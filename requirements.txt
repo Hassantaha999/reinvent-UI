@@ -6,4 +6,4 @@ matplotlib==3.9.2
 numpy==1.26.4
 pandas==2.2.3
 rdkit==2024.03.5
-libxrender1==1:0.9.10-1build4
+rich<14,>=10.14.0
