@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd 
 import rdkit
 from rdkit import Chem
+from rdkit.Chem import rdDepictor
+from rdkit.Chem.Draw import rdMolDraw2D
 import streamlit as st 
 import zipfile
 import io
@@ -1546,25 +1548,34 @@ def SMILES_file(key, run_mode, title="SMILES", mol_gen=None, mol2mol=None):
 def smi_to_png(smi: str) -> str:
     """
     Convert a SMILES string to a PNG image and return it as a data URI.
-
+    
     Args:
         smi (str): The SMILES string representing the molecule.
-
+    
     Returns:
         str: A data URI containing the PNG image of the molecule.
     """
     try:
-        mol = rdkit.Chem.MolFromSmiles(smi)
-        pil_image = rdkit.Chem.Draw.MolToImage(mol)
+        mol = Chem.MolFromSmiles(smi)
+        if mol is None:
+            raise ValueError("Invalid SMILES string.")
 
-        with io.BytesIO() as buffer:
-            pil_image.save(buffer, "png")
-            data = base64.encodebytes(buffer.getvalue()).decode("utf-8")
-        
+        # Generate 2D coordinates for drawing
+        rdDepictor.Compute2DCoords(mol)
+
+        # Initialize the drawer
+        drawer = rdMolDraw2D.MolDraw2DCairo(300, 300)
+        drawer.DrawMolecule(mol)
+        drawer.FinishDrawing()
+
+        # Get PNG binary and convert to base64
+        png_data = drawer.GetDrawingText()
+        data = base64.b64encode(png_data).decode("utf-8")
+
         return f"data:image/png;base64,{data}"
 
     except Exception as e:
-        st.error(f"An error occured: {e}") 
+        st.error(f"An error occurred: {e}")
 
 
 def convert_sdf_smi(sdf_file):
