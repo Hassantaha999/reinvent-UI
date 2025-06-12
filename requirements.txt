@@ -6,3 +6,5 @@ matplotlib==3.9.2
 numpy==1.26.4
 pandas==2.2.3
 rdkit==2024.03.5
+libcairo2
+libcairo2-dev
